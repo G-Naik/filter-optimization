@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Dynamic CSV Filter Dashboard (BI Filters)
 
-## Getting Started
+A performant, dynamic business intelligence dashboard built with **React**, **Redux Toolkit**, and **TypeScript** that loads CSV data and supports Amazon-style column-based filtering with pagination and infinite scroll.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ✅ Upload and parse CSV data using **PapaParse**
+- ✅ Dynamic column detection (no hardcoding column names)
+- ✅ Paginated data (100 rows per page)
+- ✅ Infinite scroll (reveals 20 entries at a time)
+- ✅ Filters for each column (multi-select + searchable)
+- ✅ Interdependent filters (Amazon-style)
+- ✅ Dynamic filter options update based on selection
+- ✅ Handles large datasets efficiently (e.g., 100k+ rows)
+- ✅ Optimized with memoization, lazy rendering, and debounced filtering
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+- ⚛️ React 18
+- 🎯 TypeScript
+- ⚙️ Redux Toolkit (State Management)
+- 📦 PapaParse (CSV parsing)
+- 🎛️ React-Select (multi-select filters)
+- 🧪 Jest + React Testing Library (unit testing)
+- 🌐 Deployed via Vercel / Netlify
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **CSV Stream Parsing**: Uses `Papa.parse` to stream large CSV data.
+2. **Dynamic Header Detection**: Headers are extracted from CSV — no hardcoded keys.
+3. **Redux State**: Stores the full dataset, visible data, selected filters, available filter options, and pagination info.
+4. **Filters**:
+   - Selecting a filter updates the table data.
+   - Other filters update their available values based on intersection with current filtered dataset.
+5. **Pagination**: Only 100 rows loaded per page (to keep memory usage low).
+6. **Infinite Scroll**: Shows 20 rows at a time as user scrolls down.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
